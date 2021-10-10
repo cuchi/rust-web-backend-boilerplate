@@ -1,12 +1,12 @@
 use crate::db::{self, DbConnection};
-use crate::error::AppResult;
+use crate::error::ApiResult;
 
-pub struct AppContext {
+pub struct ApiContext {
     pub pool: db::Pool,
 }
 
-impl AppContext {
-    pub fn get_db(&self) -> AppResult<DbConnection> {
+impl ApiContext {
+    pub fn get_db(&self) -> ApiResult<DbConnection> {
         Ok(self.pool.get()?)
     }
 }

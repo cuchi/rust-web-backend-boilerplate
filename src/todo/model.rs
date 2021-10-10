@@ -1,5 +1,5 @@
-use uuid::Uuid;
 use serde::Serialize;
+use uuid::Uuid;
 
 #[derive(Debug, Clone, Queryable, Serialize)]
 pub struct Todo {

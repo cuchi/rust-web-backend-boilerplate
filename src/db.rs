@@ -3,8 +3,8 @@ use diesel::r2d2::{ConnectionManager, PooledConnection};
 use diesel::PgConnection;
 use dotenv::dotenv;
 use std::env;
-pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 
+pub type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 pub type DbConnection = PooledConnection<ConnectionManager<PgConnection>>;
 
 pub fn get_connection_pool() -> Pool {

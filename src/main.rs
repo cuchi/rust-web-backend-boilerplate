@@ -2,21 +2,24 @@
 
 #[macro_use]
 extern crate rocket;
+
 #[macro_use]
 extern crate diesel;
-extern crate dotenv;
 
+mod context;
 mod db;
 mod error;
-mod context;
 mod schema;
 mod todo;
 
-fn main() {
-    let all_routes: Vec<rocket::Route> = Vec::new().into_iter().chain(todo::get_routes()).collect();
+use context::ApiContext;
+use rocket::{ignite, Route};
 
-    rocket::ignite()
-        .manage(context::AppContext {
+fn main() {
+    let all_routes: Vec<Route> = Vec::new().into_iter().chain(todo::get_routes()).collect();
+
+    ignite()
+        .manage(ApiContext {
             pool: db::get_connection_pool(),
         })
         .mount("/api", all_routes)

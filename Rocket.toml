@@ -1,2 +1,0 @@
-[global.databases]
-default_db = { url = "postgres://postgres:postgres@localhost:5432/postgres" }
